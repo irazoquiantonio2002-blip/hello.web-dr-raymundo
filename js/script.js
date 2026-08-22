@@ -28,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeMobileNav() {
     navToggle.classList.remove('is-active');
     mobileNav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
   if (navToggle && mobileNav) {
     navToggle.addEventListener('click', function () {
       var open = mobileNav.classList.toggle('is-open');
       navToggle.classList.toggle('is-active', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
     });
     mobileNav.querySelectorAll('a').forEach(function (a) {
